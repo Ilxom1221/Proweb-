@@ -1,0 +1,10 @@
+{% load blog_tags %}
+<div class="nav-scroller py-1 mb-2 border-danger">
+    <nav class="nav d-flex justify-content-between flex-column ">
+        <a class="btn btn-dark border-primary mx-4 mb-3 p-2 link-light navbar-brand" href="{% url 'index' %}">Все статьи</a>
+        {% get_categories as categories %}
+        {% for category in categories %}
+        <a class="btn btn-dark border-primary mx-4 mb-3 p-2 link-light navbar-brand" href="{{ category.get_absolute_url }}">{{ category }}</a>
+        {% endfor %}
+    </nav>
+</div>

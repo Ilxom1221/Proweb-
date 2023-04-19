@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block main %}
+
+<div class="d-flex justify-content-center">
+    {% if request.user.is_authenticated %}
+    <form action="" method="post" class="text-center">
+        {% csrf_token %}
+        <p class="text-light fs-5">
+            Вы действительно хотите удалить статью с названием "{{ article.title }}"
+        </p>
+        <input type="submit" value="Да удалить" class="btn btn-danger mx-2">
+        <a href="{{ article.get_absolute_url }}" class="btn btn-success">Назад</a>
+    </form>
+    {% else %}
+    <a href="{% url 'login' %}" class="btn btn-danger text-light mt-4">Войти в аккаунт</a>
+    {% endif %}
+</div>
+
+
+
+
+{% endblock main %}
